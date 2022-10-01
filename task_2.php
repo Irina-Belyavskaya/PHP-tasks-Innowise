@@ -4,8 +4,6 @@ function birthdayCountdown ($date) : int {
     $clearDate = preg_replace('/[^0-9\-]/u', '', trim($date));
     $dateArray = explode('-', $clearDate);
 
-    var_dump(($dateArray));
-
     if (count($dateArray) !== 3) {
         return -1;
     }
