@@ -4,17 +4,10 @@ function birthdayCountdown ($date) : int {
     $clearDate = preg_replace('/[^0-9\-]/u', '', trim($date));
     $dateArray = explode('-', $clearDate);
 
-    if (count($dateArray) !== 3) {
-        return -1;
-    }
+    if (!CheckValidation($dateArray))
+        return false;
 
-    for ($i = 0; $i < count($dateArray); $i++) {
-        if (!is_numeric($dateArray[$i]) || $dateArray[$i] == 0) {
-            return -1;
-        }
-    }
-
-    $today = date("d-m-y");
+    $today = date("d-m-Y");
     $todayArray = explode('-', $today);
 
     $todayDays = mktime(0, 0, 0, $todayArray[1], $todayArray[0], 0);
@@ -27,9 +20,21 @@ function birthdayCountdown ($date) : int {
     return  $days < 0 ? $days + $yearDays : $days;
 }
 
+function CheckValidation ($dateArray) : bool {
+    if (count($dateArray) !== 3) {
+        return false;
+    }
 
-$days = birthdayCountdown("10-01-2002");
-if ($days === -1) {
+    for ($i = 0; $i < count($dateArray); $i++) {
+        if (!is_numeric($dateArray[$i]) || $dateArray[$i] == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+$days = birthdayCountdown("10-02-2002");
+if (!$days) {
     echo "Date is invalid";
 } else {
     echo "Days left: " . $days;

@@ -10,8 +10,8 @@ function isValidEmail ($email) : bool {
 }
 
 if (isValidEmail('https://innowise.ru')) {
-    echo 'Email is correct.';
+    echo 'URL is correct.';
 } else {
-    echo 'Email is invalid.';
+    echo 'URL is invalid.';
 }
 
