@@ -5,7 +5,7 @@ function isValidURl ($url) : bool {
     if (preg_match($regexp, $url, $match ,0, 0)) {
         return true;
     } else {
-         return false;
+        return false;
     }
 }
 
